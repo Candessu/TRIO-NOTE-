@@ -51,8 +51,8 @@ jobs:
                   applicationId = "com.syritis.trio"
                   minSdk = 26
                   targetSdk = 34
-                  versionCode = 3
-                  versionName = "1.2"
+                  versionCode = 4
+                  versionName = "1.3"
               }
               compileOptions {
                   sourceCompatibility = JavaVersion.VERSION_17
@@ -81,6 +81,7 @@ jobs:
               <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" android:maxSdkVersion="28"/>
               <uses-permission android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
               <uses-permission android:name="android.permission.WAKE_LOCK"/>
+              <uses-permission android:name="android.permission.REQUEST_IGNORE_BATTERY_OPTIMIZATIONS"/>
               <uses-permission android:name="android.permission.SCHEDULE_EXACT_ALARM" android:maxSdkVersion="32"/>
               <uses-permission android:name="android.permission.USE_EXACT_ALARM"/>
               <application android:label="Mon Trio" android:allowBackup="false"
@@ -699,131 +700,136 @@ jobs:
           c2UoQW5kcm9pZC5saXN0U291bmRzKCkpfWNhdGNoKGUpe1NORD1bXX19cmV0dXJuIFNORH0KZnVu
           Y3Rpb24gcm1VSSgpewppZighKHdpbmRvdy5BbmRyb2lkJiZBbmRyb2lkLnNldFJlbWluZGVyKSly
           ZXR1cm4gYDxoND7wn5SUIFJhcHBlbCBzb25vcmU8L2g0PjxzbWFsbD5EaXNwb25pYmxlIHNldWxl
-          bWVudCBkYW5zIGwnQVBLIEFuZHJvaWQuPC9zbWFsbD5gOwpsZXQgbng9Jyc7dHJ5e254PUFuZHJv
-          aWQubmV4dFJlbWluZGVyKCl9Y2F0Y2goZSl7fQpyZXR1cm4gYDxoND7wn5SUIFJhcHBlbCBzb25v
-          cmUgRXNwcml0PC9oND48c21hbGw+VW4gYmlwIGRpc2NyZXQgcG91ciBwZW5zZXIgw6Agbm90ZXIg
-          dm90cmUgw6l0YXQuJHtSTS5vbiYmbng/JyBQcm9jaGFpbiByYXBwZWwgOiA8Yj4nK254Kyc8L2I+
-          Lic6Jyd9PC9zbWFsbD48YnV0dG9uIGNsYXNzPSJidCAke1JNLm9uPydvbic6Jyd9IiBzdHlsZT0i
-          d2lkdGg6MTAwJTttYXJnaW46NnB4IDAiIG9uY2xpY2s9InJtU2V0KCdvbicsJHtSTS5vbj8wOjF9
-          KSI+JHtSTS5vbj8n8J+UlCBSYXBwZWwgYWN0aXbDqSAodG91Y2hlciBwb3VyIGTDqXNhY3RpdmVy
-          KSc6J/CflJUgUmFwcGVsIGTDqXNhY3RpdsOpICh0b3VjaGVyIHBvdXIgYWN0aXZlciknfTwvYnV0
-          dG9uPjxkaXYgc3R5bGU9ImRpc3BsYXk6ZmxleDtnYXA6OHB4Ij48bGFiZWwgY2xhc3M9ZiBzdHls
-          ZT0iZmxleDoxIj5EZTxpbnB1dCB0eXBlPXRpbWUgdmFsdWU9IiR7Uk0uc3R9IiBvbmNoYW5nZT0i
-          cm1TZXQoJ3N0Jyx0aGlzLnZhbHVlKSI+PC9sYWJlbD48bGFiZWwgY2xhc3M9ZiBzdHlsZT0iZmxl
-          eDoxIj7DgDxpbnB1dCB0eXBlPXRpbWUgdmFsdWU9IiR7Uk0uZW59IiBvbmNoYW5nZT0icm1TZXQo
-          J2VuJyx0aGlzLnZhbHVlKSI+PC9sYWJlbD48L2Rpdj48bGFiZWwgY2xhc3M9Zj5GcsOpcXVlbmNl
-          PHNlbGVjdCBvbmNoYW5nZT0icm1TZXQoJ2V2JywrdGhpcy52YWx1ZSkiPiR7W1szMCwnVG91dGVz
-          IGxlcyAzMCBtaW4nXSxbNjAsJ1RvdXRlcyBsZXMgaGV1cmVzJ10sWzkwLCdUb3V0ZXMgbGVzIDEg
-          aCAzMCddLFsxMjAsJ1RvdXRlcyBsZXMgMiBoJ11dLm1hcCgoW3YsdF0pPT5gPG9wdGlvbiB2YWx1
-          ZT0ke3Z9ICR7Uk0uZXY9PXY/J3NlbGVjdGVkJzonJ30+JHt0fTwvb3B0aW9uPmApLmpvaW4oJycp
-          fTwvc2VsZWN0PjwvbGFiZWw+PGxhYmVsIGNsYXNzPWY+U29uPHNlbGVjdCBvbmNoYW5nZT0icm1T
-          ZXQoJ3NuZCcsdGhpcy52YWx1ZSkiPiR7cm1TbmQoKS5tYXAocz0+YDxvcHRpb24gdmFsdWU9IiR7
-          RShzLmlkKX0iICR7Uk0uc25kPT1zLmlkPydzZWxlY3RlZCc6Jyd9PiR7RShzLm4pfTwvb3B0aW9u
-          PmApLmpvaW4oJycpfTwvc2VsZWN0PjwvbGFiZWw+PGxhYmVsIGNsYXNzPWY+RHVyw6llIGR1IHNv
-          biA6IDxiPiR7KFJNLmR1ci8xMDAwKS50b0ZpeGVkKDEpfSBzPC9iPjxpbnB1dCB0eXBlPXJhbmdl
-          IG1pbj0zMDAgbWF4PTIwMDAgc3RlcD0xMDAgdmFsdWU9JHtSTS5kdXJ9IHN0eWxlPSJwYWRkaW5n
-          OjAiIG9uaW5wdXQ9InRoaXMucHJldmlvdXNFbGVtZW50U2libGluZy50ZXh0Q29udGVudD0odGhp
-          cy52YWx1ZS8xMDAwKS50b0ZpeGVkKDEpKycgcyciIG9uY2hhbmdlPSJybVNldCgnZHVyJywrdGhp
-          cy52YWx1ZSkiPjwvbGFiZWw+PGxhYmVsIGNsYXNzPWY+Vm9sdW1lIGR1IHJhcHBlbCA6IDxiPiR7
-          Uk0udm9sfSAlPC9iPjxpbnB1dCB0eXBlPXJhbmdlIG1pbj01IG1heD0xMDAgc3RlcD01IHZhbHVl
-          PSR7Uk0udm9sfSBzdHlsZT0icGFkZGluZzowIiBvbmlucHV0PSJ0aGlzLnByZXZpb3VzRWxlbWVu
-          dFNpYmxpbmcudGV4dENvbnRlbnQ9dGhpcy52YWx1ZSsnICUnIiBvbmNoYW5nZT0icm1TZXQoJ3Zv
-          bCcsK3RoaXMudmFsdWUpIj48L2xhYmVsPjxidXR0b24gY2xhc3M9YnQgc3R5bGU9IndpZHRoOjEw
-          MCU7bWFyZ2luOjZweCAwIiBvbmNsaWNrPSJBbmRyb2lkLnRlc3RTb3VuZChKU09OLnN0cmluZ2lm
-          eShSTSkpIj7ilrYgVGVzdGVyIGxlIHNvbjwvYnV0dG9uPjxzbWFsbD5TaSBsZSByYXBwZWwgbmUg
-          c29ubmUgcGFzIMOpY3JhbiDDqXRlaW50LCBhdXRvcmlzZXogwqsgTW9uIFRyaW8gwrsgc2FucyBy
-          ZXN0cmljdGlvbiBkZSBiYXR0ZXJpZSBkYW5zIGxlcyByw6lnbGFnZXMgZHUgdMOpbMOpcGhvbmUu
-          PC9zbWFsbD5gfQppZih3aW5kb3cuQW5kcm9pZCYmQW5kcm9pZC5zZXRSZW1pbmRlciYmUk0ub24p
-          QW5kcm9pZC5zZXRSZW1pbmRlcihKU09OLnN0cmluZ2lmeShSTSkpOwpmdW5jdGlvbiBwcygpe3Jl
-          dHVybiBgPGRpdiBzdHlsZT0icG9zaXRpb246Zml4ZWQ7aW5zZXQ6MDtiYWNrZ3JvdW5kOiMwMDA3
-          O3otaW5kZXg6NDA7ZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmZsZXgtZW5kIiBvbmNsaWNrPSJT
-          LnNldD0wO1IoKSI+PGRpdiBjbGFzcz1jYXJkIHN0eWxlPSJ3aWR0aDoxMDAlO21hcmdpbjowO2Jv
-          cmRlci1yYWRpdXM6MTZweCAxNnB4IDAgMDttYXgtaGVpZ2h0Ojg1dmg7b3ZlcmZsb3c6YXV0bztw
-          YWRkaW5nLWJvdHRvbTpjYWxjKDE0cHggKyBlbnYoc2FmZS1hcmVhLWluc2V0LWJvdHRvbSwwcHgp
-          KSIgb25jbGljaz0iZXZlbnQuc3RvcFByb3BhZ2F0aW9uKCkiPjxkaXYgY2xhc3M9Ync+PGI+4pqZ
-          IFBhcmFtw6h0cmVzPC9iPjxidXR0b24gY2xhc3M9YnQgb25jbGljaz0iUy5zZXQ9MDtSKCkiPuKc
-          lTwvYnV0dG9uPjwvZGl2PiR7YXAyKCl9JHt3aW5kb3cuQW5kcm9pZCYmQW5kcm9pZC5waW5XaWRn
-          ZXQ/JzxoND5XaWRnZXQ8L2g0PjxidXR0b24gY2xhc3M9ImJ0IHByaSIgc3R5bGU9IndpZHRoOjEw
-          MCU7bWFyZ2luOjZweCAwIiBvbmNsaWNrPSJBbmRyb2lkLnBpbldpZGdldCgpIj7wn5OMIEFqb3V0
-          ZXIgbGUgd2lkZ2V0IMKrIEFnZW5kYSBkdSBqb3VyIMK7PC9idXR0b24+PHNtYWxsPkxlIHTDqWzD
-          qXBob25lIHZvdXMgZGVtYW5kZXJhIGRlIGNvbmZpcm1lci48L3NtYWxsPic6Jyd9JHtybVVJKCl9
-          PGg0PlNhdXZlZ2FyZGU8L2g0PjxzbWFsbD4ke2RiLmxiPydEZXJuacOocmUgc2F1dmVnYXJkZSA6
-          ICcrbmV3IERhdGUoZGIubGIpLnRvTG9jYWxlU3RyaW5nKCdmci1GUicse2RhdGVTdHlsZTonc2hv
-          cnQnLHRpbWVTdHlsZTonc2hvcnQnfSk6J0F1Y3VuZSBzYXV2ZWdhcmRlIGZhaXRlJ30uIEZhaXRl
-          cy1lbiB1bmUgYXZhbnQgY2hhcXVlIG1pc2Ugw6Agam91ciBkZSBsJ2FwcGxpY2F0aW9uLjwvc21h
-          bGw+PGJ1dHRvbiBjbGFzcz0iYnQgcHJpIiBzdHlsZT0id2lkdGg6MTAwJTttYXJnaW46NnB4IDAi
-          IG9uY2xpY2s9ImJrKCkiPvCfkr4gU2F1dmVnYXJkZXIgKGZpY2hpZXIpPC9idXR0b24+PGJ1dHRv
-          biBjbGFzcz1idCBzdHlsZT0id2lkdGg6MTAwJTttYXJnaW46NnB4IDAiIG9uY2xpY2s9ImNwKCki
-          PvCfk4sgQ29waWVyIGxhIHNhdXZlZ2FyZGU8L2J1dHRvbj48aDQ+UmVzdGF1cmVyPC9oND48bGFi
-          ZWwgY2xhc3M9YnQgc3R5bGU9ImRpc3BsYXk6YmxvY2s7dGV4dC1hbGlnbjpjZW50ZXI7bWFyZ2lu
-          OjZweCAwIj7imbsgUmVzdGF1cmVyIGRlcHVpcyB1biBmaWNoaWVyPGlucHV0IHR5cGU9ZmlsZSBo
-          aWRkZW4gYWNjZXB0PS5qc29uIG9uY2hhbmdlPSJycyh0aGlzKSI+PC9sYWJlbD48dGV4dGFyZWEg
-          aWQ9cHQgcm93cz0zIHBsYWNlaG9sZGVyPSJPdSBjb2xsZXogaWNpIHVuZSBzYXV2ZWdhcmRlIGNv
-          cGnDqWXigKYiPjwvdGV4dGFyZWE+PGJ1dHRvbiBjbGFzcz1idCBzdHlsZT0id2lkdGg6MTAwJSIg
-          b25jbGljaz0icnQoKSI+4pm7IFJlc3RhdXJlciBkZXB1aXMgbGUgdGV4dGU8L2J1dHRvbj48cCBp
-          ZD1zbSBjbGFzcz1tPjwvcD48L2Rpdj48L2Rpdj5gfQp2YXIgV1Q7CmZ1bmN0aW9uIHcydChoKXtj
-          b25zdCBlPWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO2UuaW5uZXJIVE1MPWg7ZS5xdWVy
-          eVNlbGVjdG9yQWxsKCd1bD5saScpLmZvckVhY2gobD0+e2lmKCFsLnF1ZXJ5U2VsZWN0b3IoJ2lu
-          cHV0W3R5cGU9Y2hlY2tib3hdJykpbC5wcmVwZW5kKCfigKIgJyl9KTtlLnF1ZXJ5U2VsZWN0b3JB
-          bGwoJ29sJykuZm9yRWFjaChvPT57bGV0IG49MDtbLi4uby5jaGlsZHJlbl0uZm9yRWFjaChsPT57
-          aWYobC50YWdOYW1lPT0nTEknKXtuKys7aWYoIWwucXVlcnlTZWxlY3RvcignaW5wdXRbdHlwZT1j
-          aGVja2JveF0nKSlsLnByZXBlbmQobisnLiAnKX19KX0pO2UucXVlcnlTZWxlY3RvckFsbCgnaW5w
-          dXRbdHlwZT1jaGVja2JveF0nKS5mb3JFYWNoKGk9PmkucmVwbGFjZVdpdGgoKGkuY2hlY2tlZHx8
-          aS5oYXNBdHRyaWJ1dGUoJ2NoZWNrZWQnKT8n4piRJzon4piQJykrJyAnKSk7ZS5xdWVyeVNlbGVj
-          dG9yQWxsKCdicicpLmZvckVhY2goYj0+Yi5yZXBsYWNlV2l0aCgnXG4nKSk7ZS5xdWVyeVNlbGVj
-          dG9yQWxsKCd1bCxvbCxoMSxoMixoMyxoNCxoNSxoNixibG9ja3F1b3RlLHByZSx0YWJsZSx0cicp
-          LmZvckVhY2goYj0+e2IucHJlcGVuZCgnXG4nKTtiLmFwcGVuZCgnXG4nKX0pO2UucXVlcnlTZWxl
-          Y3RvckFsbCgnZGl2LHAsbGksaDEsaDIsaDMsaDQsaDUsaDYsYmxvY2txdW90ZSxwcmUsdHInKS5m
-          b3JFYWNoKGI9PmIuYXBwZW5kKCdcbicpKTtyZXR1cm4gZS50ZXh0Q29udGVudC5yZXBsYWNlKC9b
-          IFx0XStcbi9nLCdcbicpLnJlcGxhY2UoL1xuWyBcdF0qXG4oPz1bIFx0XSooPzrigKIgfFxkK1wu
-          ICkpL2csJ1xuJykucmVwbGFjZSgvXG57Myx9L2csJ1xuXG4nKS50cmltKCl9CmZ1bmN0aW9uIHdx
-          KCl7Y2xlYXJUaW1lb3V0KFdUKTtXVD1zZXRUaW1lb3V0KHdzeW5jLDgwMCl9CmZ1bmN0aW9uIHdz
-          eW5jKCl7aWYoISh3aW5kb3cuQW5kcm9pZCYmQW5kcm9pZC5hZ2VuZGFBbGwpKXJldHVybjtjb25z
-          dCBsaW09YWQoVEQsMSksbz17fTtbLi4ubmV3IFNldChbLi4uT2JqZWN0LmtleXMoZGIucGcpLC4u
-          Lk9iamVjdC5rZXlzKGRiLmFnKV0pXS5maWx0ZXIoaz0+L15cZHs0fS1cZFxkLVxkXGQkLy50ZXN0
-          KGspJiZrPj1saW0pLmZvckVhY2goaz0+e29ba109cHIoaykubWFwKHcydCkuZmlsdGVyKEJvb2xl
-          YW4pLmpvaW4oJ1xuXG4nKX0pO0FuZHJvaWQuYWdlbmRhQWxsKEpTT04uc3RyaW5naWZ5KG8pKX0K
-          bGV0IFBBTD0wOwpmdW5jdGlvbiBjYngoKXtleCgnaW5zZXJ0SFRNTCcsJzxpbnB1dCB0eXBlPSJj
-          aGVja2JveCI+Jm5ic3A7Jyl9CmZ1bmN0aW9uIHRicigpe2NvbnN0IHQ9JCgndGJhcicpLEI9KGMs
-          bCk9PmA8YnV0dG9uIG9ubW91c2Vkb3duPSJldmVudC5wcmV2ZW50RGVmYXVsdCgpIiBvbmNsaWNr
-          PSJleCgnJHtjfScpIj4ke2x9PC9idXR0b24+YDtpZihQQUwpe2NvbnN0IEM9UEFMPT0nZic/Wycj
-          YzAzOTJiJywnI2U2N2UyMicsJyNmMWM0MGYnLCcjMmU5ZTViJywnIzFlNmZkOScsJyM4ZTQ0YWQn
-          LCcjMTcyMDJhJywnI2ZmZmZmZiddOlsnI2ZmZjE3NicsJyNhNWQ2YTcnLCcjOTBjYWY5JywnI2Y0
-          OGZiMScsJyNmZmNjODAnLCcjY2U5M2Q4JywnI2ZmZmZmZiddO3QuaW5uZXJIVE1MPWA8YnV0dG9u
-          IG9ubW91c2Vkb3duPSJldmVudC5wcmV2ZW50RGVmYXVsdCgpIiBvbmNsaWNrPSJQQUw9MDt0YnIo
-          KSI+4peAPC9idXR0b24+YCtDLm1hcChjPT5gPHNwYW4gY2xhc3M9c3cgc3R5bGU9ImJhY2tncm91
-          bmQ6JHtjfSIgb25tb3VzZWRvd249ImV2ZW50LnByZXZlbnREZWZhdWx0KCkiIG9uY2xpY2s9ImV4
-          KCcke1BBTD09J2YnPydmb3JlQ29sb3InOidoaWxpdGVDb2xvcid9JywnJHtjfScpO1BBTD0wO3Ri
-          cigpIj48L3NwYW4+YCkuam9pbignJyk7cmV0dXJufXQuaW5uZXJIVE1MPUIoJ3VuZG8nLCfihrYn
-          KStCKCdyZWRvJywn4oa3JykrQignYm9sZCcsJzxiPkI8L2I+JykrQignaXRhbGljJywnPGk+STwv
-          aT4nKStCKCd1bmRlcmxpbmUnLCc8dT5VPC91PicpK0IoJ3N0cmlrZVRocm91Z2gnLCc8cz5TPC9z
-          PicpK2A8YnV0dG9uIG9ubW91c2Vkb3duPSJldmVudC5wcmV2ZW50RGVmYXVsdCgpIiBvbmNsaWNr
-          PSJQQUw9J2YnO3RicigpIj48c3BhbiBzdHlsZT0iYm9yZGVyLWJvdHRvbTozcHggc29saWQgI2Mw
-          MzkyYiI+QTwvc3Bhbj48L2J1dHRvbj48YnV0dG9uIG9ubW91c2Vkb3duPSJldmVudC5wcmV2ZW50
-          RGVmYXVsdCgpIiBvbmNsaWNrPSJQQUw9J2gnO3RicigpIj7wn5aNPC9idXR0b24+YCtCKCdyZW1v
-          dmVGb3JtYXQnLCfinJUnKStgPGJ1dHRvbiBvbm1vdXNlZG93bj0iZXZlbnQucHJldmVudERlZmF1
-          bHQoKSIgb25jbGljaz0iY2J4KCkiPuKYkTwvYnV0dG9uPmArQignanVzdGlmeUxlZnQnLCfih6Qn
-          KStCKCdqdXN0aWZ5Q2VudGVyJywn4oaUJykrQignanVzdGlmeVJpZ2h0Jywn4oelJykrQignanVz
-          dGlmeUZ1bGwnLCfimLAnKStCKCdpbnNlcnRPcmRlcmVkTGlzdCcsJzEuJykrQignaW5zZXJ0VW5v
-          cmRlcmVkTGlzdCcsJ+KAoicpfQpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdmb2N1c2luJyxl
-          PT57aWYoZS50YXJnZXQuY2xhc3NMaXN0JiZlLnRhcmdldC5jbGFzc0xpc3QuY29udGFpbnMoJ2Vk
-          Jykpe1BBTD0wO3RicigpOyQoJ3RiYXInKS5zdHlsZS5kaXNwbGF5PSdibG9jayd9fSk7CmxldCBT
-          Uj1udWxsLFNFPW51bGw7CmNvbnN0IGVkT2Y9bj0+e249biYmKG4ubm9kZVR5cGU9PTE/bjpuLnBh
-          cmVudEVsZW1lbnQpO3JldHVybiBuJiZuLmNsb3Nlc3Q/bi5jbG9zZXN0KCcuZWQnKTpudWxsfTsK
-          ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignc2VsZWN0aW9uY2hhbmdlJywoKT0+e2NvbnN0IHM9
-          Z2V0U2VsZWN0aW9uKCk7aWYocy5yYW5nZUNvdW50KXtjb25zdCBlZD1lZE9mKHMuZ2V0UmFuZ2VB
-          dCgwKS5jb21tb25BbmNlc3RvckNvbnRhaW5lcik7aWYoZWQpe1NSPXMuZ2V0UmFuZ2VBdCgwKS5j
-          bG9uZVJhbmdlKCk7U0U9ZWR9fX0pOwpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdwb2ludGVy
-          ZG93bicsZT0+e2lmKGUudGFyZ2V0LmNsb3Nlc3QmJiFlLnRhcmdldC5jbG9zZXN0KCcuZWQnKSYm
-          IWUudGFyZ2V0LmNsb3Nlc3QoJyN0YmFyJykpJCgndGJhcicpLnN0eWxlLmRpc3BsYXk9J25vbmUn
-          fSk7CmZ1bmN0aW9uIGV4KGMsdil7aWYoU0UmJmRvY3VtZW50LmJvZHkuY29udGFpbnMoU0UpKXtT
-          RS5mb2N1cygpO2NvbnN0IHM9Z2V0U2VsZWN0aW9uKCk7cy5yZW1vdmVBbGxSYW5nZXMoKTtpZihT
-          UilzLmFkZFJhbmdlKFNSKX1kb2N1bWVudC5leGVjQ29tbWFuZChjLGZhbHNlLHY9PW51bGw/bnVs
-          bDp2KX0KZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignY2hhbmdlJyxlPT57Y29uc3QgdD1lLnRh
-          cmdldDtpZih0LnR5cGU9PSdjaGVja2JveCcmJnQuY2xvc2VzdCYmdC5jbG9zZXN0KCcuZWQnKSl7
-          dC50b2dnbGVBdHRyaWJ1dGUoJ2NoZWNrZWQnLHQuY2hlY2tlZCk7dC5jbG9zZXN0KCcuZWQnKS5k
-          aXNwYXRjaEV2ZW50KG5ldyBFdmVudCgnaW5wdXQnLHtidWJibGVzOnRydWV9KSl9fSk7ClIoKTt3
-          cSgpOwo8L3NjcmlwdD48L2JvZHk+PC9odG1sPgo=
+          bWVudCBkYW5zIGwnQVBLIEFuZHJvaWQuPC9zbWFsbD5gOwpsZXQgbng9JycsZGc9e307dHJ5e254
+          PUFuZHJvaWQubmV4dFJlbWluZGVyKCl9Y2F0Y2goZSl7fXRyeXtkZz1KU09OLnBhcnNlKEFuZHJv
+          aWQuZGlhZygpKX1jYXRjaChlKXt9CnJldHVybiBgPGg0PvCflJQgUmFwcGVsIHNvbm9yZSBFc3By
+          aXQ8L2g0PjxzbWFsbD5VbiBiaXAgZGlzY3JldCBwb3VyIHBlbnNlciDDoCBub3RlciB2b3RyZSDD
+          qXRhdC4ke1JNLm9uJiZueD8nIFByb2NoYWluIHJhcHBlbCA6IDxiPicrbngrJzwvYj4uJzonJ308
+          L3NtYWxsPjxidXR0b24gY2xhc3M9ImJ0ICR7Uk0ub24/J29uJzonJ30iIHN0eWxlPSJ3aWR0aDox
+          MDAlO21hcmdpbjo2cHggMCIgb25jbGljaz0icm1TZXQoJ29uJywke1JNLm9uPzA6MX0pIj4ke1JN
+          Lm9uPyfwn5SUIFJhcHBlbCBhY3RpdsOpICh0b3VjaGVyIHBvdXIgZMOpc2FjdGl2ZXIpJzon8J+U
+          lSBSYXBwZWwgZMOpc2FjdGl2w6kgKHRvdWNoZXIgcG91ciBhY3RpdmVyKSd9PC9idXR0b24+PGRp
+          diBzdHlsZT0iZGlzcGxheTpmbGV4O2dhcDo4cHgiPjxsYWJlbCBjbGFzcz1mIHN0eWxlPSJmbGV4
+          OjEiPkRlPGlucHV0IHR5cGU9dGltZSB2YWx1ZT0iJHtSTS5zdH0iIG9uY2hhbmdlPSJybVNldCgn
+          c3QnLHRoaXMudmFsdWUpIj48L2xhYmVsPjxsYWJlbCBjbGFzcz1mIHN0eWxlPSJmbGV4OjEiPsOA
+          PGlucHV0IHR5cGU9dGltZSB2YWx1ZT0iJHtSTS5lbn0iIG9uY2hhbmdlPSJybVNldCgnZW4nLHRo
+          aXMudmFsdWUpIj48L2xhYmVsPjwvZGl2PjxsYWJlbCBjbGFzcz1mPkZyw6lxdWVuY2U8c2VsZWN0
+          IG9uY2hhbmdlPSJybVNldCgnZXYnLCt0aGlzLnZhbHVlKSI+JHtbWzMwLCdUb3V0ZXMgbGVzIDMw
+          IG1pbiAoOWgwMCwgOWgzMOKApiknXSxbNjAsJ1RvdXRlcyBsZXMgaGV1cmVzICg5aDAwLCAxMGgw
+          MOKApiknXSxbOTAsJ1RvdXRlcyBsZXMgMSBoIDMwICg2aDAwLCA3aDMw4oCmKSddLFsxMjAsJ1Rv
+          dXRlcyBsZXMgMiBoICg2aDAwLCA4aDAw4oCmKSddXS5tYXAoKFt2LHRdKT0+YDxvcHRpb24gdmFs
+          dWU9JHt2fSAke1JNLmV2PT12PydzZWxlY3RlZCc6Jyd9PiR7dH08L29wdGlvbj5gKS5qb2luKCcn
+          KX08L3NlbGVjdD48L2xhYmVsPjxsYWJlbCBjbGFzcz1mPlNvbjxzZWxlY3Qgb25jaGFuZ2U9InJt
+          U2V0KCdzbmQnLHRoaXMudmFsdWUpIj4ke3JtU25kKCkubWFwKHM9PmA8b3B0aW9uIHZhbHVlPSIk
+          e0Uocy5pZCl9IiAke1JNLnNuZD09cy5pZD8nc2VsZWN0ZWQnOicnfT4ke0Uocy5uKX08L29wdGlv
+          bj5gKS5qb2luKCcnKX08L3NlbGVjdD48L2xhYmVsPjxsYWJlbCBjbGFzcz1mPkR1csOpZSBkdSBz
+          b24gOiA8Yj4keyhSTS5kdXIvMTAwMCkudG9GaXhlZCgxKX0gczwvYj48aW5wdXQgdHlwZT1yYW5n
+          ZSBtaW49MzAwIG1heD0yMDAwIHN0ZXA9MTAwIHZhbHVlPSR7Uk0uZHVyfSBzdHlsZT0icGFkZGlu
+          ZzowIiBvbmlucHV0PSJ0aGlzLnByZXZpb3VzRWxlbWVudFNpYmxpbmcudGV4dENvbnRlbnQ9KHRo
+          aXMudmFsdWUvMTAwMCkudG9GaXhlZCgxKSsnIHMnIiBvbmNoYW5nZT0icm1TZXQoJ2R1cicsK3Ro
+          aXMudmFsdWUpIj48L2xhYmVsPjxsYWJlbCBjbGFzcz1mPlZvbHVtZSBkdSByYXBwZWwgOiA8Yj4k
+          e1JNLnZvbH0gJTwvYj48aW5wdXQgdHlwZT1yYW5nZSBtaW49NSBtYXg9MTAwIHN0ZXA9NSB2YWx1
+          ZT0ke1JNLnZvbH0gc3R5bGU9InBhZGRpbmc6MCIgb25pbnB1dD0idGhpcy5wcmV2aW91c0VsZW1l
+          bnRTaWJsaW5nLnRleHRDb250ZW50PXRoaXMudmFsdWUrJyAlJyIgb25jaGFuZ2U9InJtU2V0KCd2
+          b2wnLCt0aGlzLnZhbHVlKSI+PC9sYWJlbD48YnV0dG9uIGNsYXNzPWJ0IHN0eWxlPSJ3aWR0aDox
+          MDAlO21hcmdpbjo2cHggMCIgb25jbGljaz0iQW5kcm9pZC50ZXN0U291bmQoSlNPTi5zdHJpbmdp
+          ZnkoUk0pKSI+4pa2IFRlc3RlciBsZSBzb248L2J1dHRvbj48c21hbGw+QmF0dGVyaWUgOiAke2Rn
+          LmJhdD8nc2FucyByZXN0cmljdGlvbiDinJMnOidyZXN0cmVpbnRlIOKaoCAobGUgcmFwcGVsIHBl
+          dXQgw6p0cmUgY291cMOpKSd9IMK3IFZvbHVtZSA6IHLDqWdsw6kgYXV0b21hdGlxdWVtZW50IHBl
+          bmRhbnQgbGUgYmlwLjwvc21hbGw+JHtkZy5iYXQ/Jyc6JzxidXR0b24gY2xhc3M9ImJ0IHByaSIg
+          c3R5bGU9IndpZHRoOjEwMCU7bWFyZ2luOjZweCAwIiBvbmNsaWNrPSJBbmRyb2lkLmFza0JhdHRl
+          cnkoKSI+4pqhIEF1dG9yaXNlciBzYW5zIHJlc3RyaWN0aW9uIGRlIGJhdHRlcmllPC9idXR0b24+
+          J31gfQppZih3aW5kb3cuQW5kcm9pZCYmQW5kcm9pZC5zZXRSZW1pbmRlciYmUk0ub24pQW5kcm9p
+          ZC5zZXRSZW1pbmRlcihKU09OLnN0cmluZ2lmeShSTSkpOwpmdW5jdGlvbiBwcygpe3JldHVybiBg
+          PGRpdiBzdHlsZT0icG9zaXRpb246Zml4ZWQ7aW5zZXQ6MDtiYWNrZ3JvdW5kOiMwMDA3O3otaW5k
+          ZXg6NDA7ZGlzcGxheTpmbGV4O2FsaWduLWl0ZW1zOmZsZXgtZW5kIiBvbmNsaWNrPSJTLnNldD0w
+          O1IoKSI+PGRpdiBjbGFzcz1jYXJkIHN0eWxlPSJ3aWR0aDoxMDAlO21hcmdpbjowO2JvcmRlci1y
+          YWRpdXM6MTZweCAxNnB4IDAgMDttYXgtaGVpZ2h0Ojg1dmg7b3ZlcmZsb3c6YXV0bztwYWRkaW5n
+          LWJvdHRvbTpjYWxjKDE0cHggKyBlbnYoc2FmZS1hcmVhLWluc2V0LWJvdHRvbSwwcHgpKSIgb25j
+          bGljaz0iZXZlbnQuc3RvcFByb3BhZ2F0aW9uKCkiPjxkaXYgY2xhc3M9Ync+PGI+4pqZIFBhcmFt
+          w6h0cmVzPC9iPjxidXR0b24gY2xhc3M9YnQgb25jbGljaz0iUy5zZXQ9MDtSKCkiPuKclTwvYnV0
+          dG9uPjwvZGl2PiR7YXAyKCl9JHt3aW5kb3cuQW5kcm9pZCYmQW5kcm9pZC5waW5XaWRnZXQ/Jzxo
+          ND5XaWRnZXQ8L2g0PjxidXR0b24gY2xhc3M9ImJ0IHByaSIgc3R5bGU9IndpZHRoOjEwMCU7bWFy
+          Z2luOjZweCAwIiBvbmNsaWNrPSJBbmRyb2lkLnBpbldpZGdldCgpIj7wn5OMIEFqb3V0ZXIgbGUg
+          d2lkZ2V0IMKrIEFnZW5kYSBkdSBqb3VyIMK7PC9idXR0b24+PHNtYWxsPkxlIHTDqWzDqXBob25l
+          IHZvdXMgZGVtYW5kZXJhIGRlIGNvbmZpcm1lci48L3NtYWxsPic6Jyd9JHtybVVJKCl9PGg0PlNh
+          dXZlZ2FyZGU8L2g0PjxzbWFsbD4ke2RiLmxiPydEZXJuacOocmUgc2F1dmVnYXJkZSA6ICcrbmV3
+          IERhdGUoZGIubGIpLnRvTG9jYWxlU3RyaW5nKCdmci1GUicse2RhdGVTdHlsZTonc2hvcnQnLHRp
+          bWVTdHlsZTonc2hvcnQnfSk6J0F1Y3VuZSBzYXV2ZWdhcmRlIGZhaXRlJ30uIEZhaXRlcy1lbiB1
+          bmUgYXZhbnQgY2hhcXVlIG1pc2Ugw6Agam91ciBkZSBsJ2FwcGxpY2F0aW9uLjwvc21hbGw+PGJ1
+          dHRvbiBjbGFzcz0iYnQgcHJpIiBzdHlsZT0id2lkdGg6MTAwJTttYXJnaW46NnB4IDAiIG9uY2xp
+          Y2s9ImJrKCkiPvCfkr4gU2F1dmVnYXJkZXIgKGZpY2hpZXIpPC9idXR0b24+PGJ1dHRvbiBjbGFz
+          cz1idCBzdHlsZT0id2lkdGg6MTAwJTttYXJnaW46NnB4IDAiIG9uY2xpY2s9ImNwKCkiPvCfk4sg
+          Q29waWVyIGxhIHNhdXZlZ2FyZGU8L2J1dHRvbj48aDQ+UmVzdGF1cmVyPC9oND48bGFiZWwgY2xh
+          c3M9YnQgc3R5bGU9ImRpc3BsYXk6YmxvY2s7dGV4dC1hbGlnbjpjZW50ZXI7bWFyZ2luOjZweCAw
+          Ij7imbsgUmVzdGF1cmVyIGRlcHVpcyB1biBmaWNoaWVyPGlucHV0IHR5cGU9ZmlsZSBoaWRkZW4g
+          YWNjZXB0PS5qc29uIG9uY2hhbmdlPSJycyh0aGlzKSI+PC9sYWJlbD48dGV4dGFyZWEgaWQ9cHQg
+          cm93cz0zIHBsYWNlaG9sZGVyPSJPdSBjb2xsZXogaWNpIHVuZSBzYXV2ZWdhcmRlIGNvcGnDqWXi
+          gKYiPjwvdGV4dGFyZWE+PGJ1dHRvbiBjbGFzcz1idCBzdHlsZT0id2lkdGg6MTAwJSIgb25jbGlj
+          az0icnQoKSI+4pm7IFJlc3RhdXJlciBkZXB1aXMgbGUgdGV4dGU8L2J1dHRvbj48cCBpZD1zbSBj
+          bGFzcz1tPjwvcD48L2Rpdj48L2Rpdj5gfQp2YXIgV1Q7CmZ1bmN0aW9uIHcydChoKXtjb25zdCBl
+          PWRvY3VtZW50LmNyZWF0ZUVsZW1lbnQoJ2RpdicpO2UuaW5uZXJIVE1MPWg7ZS5xdWVyeVNlbGVj
+          dG9yQWxsKCd1bD5saScpLmZvckVhY2gobD0+e2lmKCFsLnF1ZXJ5U2VsZWN0b3IoJ2lucHV0W3R5
+          cGU9Y2hlY2tib3hdJykpbC5wcmVwZW5kKCfigKIgJyl9KTtlLnF1ZXJ5U2VsZWN0b3JBbGwoJ29s
+          JykuZm9yRWFjaChvPT57bGV0IG49MDtbLi4uby5jaGlsZHJlbl0uZm9yRWFjaChsPT57aWYobC50
+          YWdOYW1lPT0nTEknKXtuKys7aWYoIWwucXVlcnlTZWxlY3RvcignaW5wdXRbdHlwZT1jaGVja2Jv
+          eF0nKSlsLnByZXBlbmQobisnLiAnKX19KX0pO2UucXVlcnlTZWxlY3RvckFsbCgnaW5wdXRbdHlw
+          ZT1jaGVja2JveF0nKS5mb3JFYWNoKGk9PmkucmVwbGFjZVdpdGgoKGkuY2hlY2tlZHx8aS5oYXNB
+          dHRyaWJ1dGUoJ2NoZWNrZWQnKT8n4piRJzon4piQJykrJyAnKSk7ZS5xdWVyeVNlbGVjdG9yQWxs
+          KCdicicpLmZvckVhY2goYj0+Yi5yZXBsYWNlV2l0aCgnXG4nKSk7ZS5xdWVyeVNlbGVjdG9yQWxs
+          KCd1bCxvbCxoMSxoMixoMyxoNCxoNSxoNixibG9ja3F1b3RlLHByZSx0YWJsZSx0cicpLmZvckVh
+          Y2goYj0+e2IucHJlcGVuZCgnXG4nKTtiLmFwcGVuZCgnXG4nKX0pO2UucXVlcnlTZWxlY3RvckFs
+          bCgnZGl2LHAsbGksaDEsaDIsaDMsaDQsaDUsaDYsYmxvY2txdW90ZSxwcmUsdHInKS5mb3JFYWNo
+          KGI9PmIuYXBwZW5kKCdcbicpKTtyZXR1cm4gZS50ZXh0Q29udGVudC5yZXBsYWNlKC9bIFx0XStc
+          bi9nLCdcbicpLnJlcGxhY2UoL1xuWyBcdF0qXG4oPz1bIFx0XSooPzrigKIgfFxkK1wuICkpL2cs
+          J1xuJykucmVwbGFjZSgvXG57Myx9L2csJ1xuXG4nKS50cmltKCl9CmZ1bmN0aW9uIHdxKCl7Y2xl
+          YXJUaW1lb3V0KFdUKTtXVD1zZXRUaW1lb3V0KHdzeW5jLDgwMCl9CmZ1bmN0aW9uIHdzeW5jKCl7
+          aWYoISh3aW5kb3cuQW5kcm9pZCYmQW5kcm9pZC5hZ2VuZGFBbGwpKXJldHVybjtjb25zdCBsaW09
+          YWQoVEQsMSksbz17fTtbLi4ubmV3IFNldChbLi4uT2JqZWN0LmtleXMoZGIucGcpLC4uLk9iamVj
+          dC5rZXlzKGRiLmFnKV0pXS5maWx0ZXIoaz0+L15cZHs0fS1cZFxkLVxkXGQkLy50ZXN0KGspJiZr
+          Pj1saW0pLmZvckVhY2goaz0+e29ba109cHIoaykubWFwKHcydCkuZmlsdGVyKEJvb2xlYW4pLmpv
+          aW4oJ1xuXG4nKX0pO0FuZHJvaWQuYWdlbmRhQWxsKEpTT04uc3RyaW5naWZ5KG8pKX0KbGV0IFBB
+          TD0wOwpmdW5jdGlvbiBjYngoKXtleCgnaW5zZXJ0SFRNTCcsJzxpbnB1dCB0eXBlPSJjaGVja2Jv
+          eCI+Jm5ic3A7Jyl9CmZ1bmN0aW9uIHRicigpe2NvbnN0IHQ9JCgndGJhcicpLEI9KGMsbCk9PmA8
+          YnV0dG9uIG9ubW91c2Vkb3duPSJldmVudC5wcmV2ZW50RGVmYXVsdCgpIiBvbmNsaWNrPSJleCgn
+          JHtjfScpIj4ke2x9PC9idXR0b24+YDtpZihQQUwpe2NvbnN0IEM9UEFMPT0nZic/WycjYzAzOTJi
+          JywnI2U2N2UyMicsJyNmMWM0MGYnLCcjMmU5ZTViJywnIzFlNmZkOScsJyM4ZTQ0YWQnLCcjMTcy
+          MDJhJywnI2ZmZmZmZiddOlsnI2ZmZjE3NicsJyNhNWQ2YTcnLCcjOTBjYWY5JywnI2Y0OGZiMScs
+          JyNmZmNjODAnLCcjY2U5M2Q4JywnI2ZmZmZmZiddO3QuaW5uZXJIVE1MPWA8YnV0dG9uIG9ubW91
+          c2Vkb3duPSJldmVudC5wcmV2ZW50RGVmYXVsdCgpIiBvbmNsaWNrPSJQQUw9MDt0YnIoKSI+4peA
+          PC9idXR0b24+YCtDLm1hcChjPT5gPHNwYW4gY2xhc3M9c3cgc3R5bGU9ImJhY2tncm91bmQ6JHtj
+          fSIgb25tb3VzZWRvd249ImV2ZW50LnByZXZlbnREZWZhdWx0KCkiIG9uY2xpY2s9ImV4KCcke1BB
+          TD09J2YnPydmb3JlQ29sb3InOidoaWxpdGVDb2xvcid9JywnJHtjfScpO1BBTD0wO3RicigpIj48
+          L3NwYW4+YCkuam9pbignJyk7cmV0dXJufXQuaW5uZXJIVE1MPUIoJ3VuZG8nLCfihrYnKStCKCdy
+          ZWRvJywn4oa3JykrQignYm9sZCcsJzxiPkI8L2I+JykrQignaXRhbGljJywnPGk+STwvaT4nKStC
+          KCd1bmRlcmxpbmUnLCc8dT5VPC91PicpK0IoJ3N0cmlrZVRocm91Z2gnLCc8cz5TPC9zPicpK2A8
+          YnV0dG9uIG9ubW91c2Vkb3duPSJldmVudC5wcmV2ZW50RGVmYXVsdCgpIiBvbmNsaWNrPSJQQUw9
+          J2YnO3RicigpIj48c3BhbiBzdHlsZT0iYm9yZGVyLWJvdHRvbTozcHggc29saWQgI2MwMzkyYiI+
+          QTwvc3Bhbj48L2J1dHRvbj48YnV0dG9uIG9ubW91c2Vkb3duPSJldmVudC5wcmV2ZW50RGVmYXVs
+          dCgpIiBvbmNsaWNrPSJQQUw9J2gnO3RicigpIj7wn5aNPC9idXR0b24+YCtCKCdyZW1vdmVGb3Jt
+          YXQnLCfinJUnKStgPGJ1dHRvbiBvbm1vdXNlZG93bj0iZXZlbnQucHJldmVudERlZmF1bHQoKSIg
+          b25jbGljaz0iY2J4KCkiPuKYkTwvYnV0dG9uPmArQignanVzdGlmeUxlZnQnLCfih6QnKStCKCdq
+          dXN0aWZ5Q2VudGVyJywn4oaUJykrQignanVzdGlmeVJpZ2h0Jywn4oelJykrQignanVzdGlmeUZ1
+          bGwnLCfimLAnKStCKCdpbnNlcnRPcmRlcmVkTGlzdCcsJzEuJykrQignaW5zZXJ0VW5vcmRlcmVk
+          TGlzdCcsJ+KAoicpfQpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdmb2N1c2luJyxlPT57aWYo
+          ZS50YXJnZXQuY2xhc3NMaXN0JiZlLnRhcmdldC5jbGFzc0xpc3QuY29udGFpbnMoJ2VkJykpe1BB
+          TD0wO3RicigpOyQoJ3RiYXInKS5zdHlsZS5kaXNwbGF5PSdibG9jayd9fSk7CmxldCBTUj1udWxs
+          LFNFPW51bGw7CmNvbnN0IGVkT2Y9bj0+e249biYmKG4ubm9kZVR5cGU9PTE/bjpuLnBhcmVudEVs
+          ZW1lbnQpO3JldHVybiBuJiZuLmNsb3Nlc3Q/bi5jbG9zZXN0KCcuZWQnKTpudWxsfTsKZG9jdW1l
+          bnQuYWRkRXZlbnRMaXN0ZW5lcignc2VsZWN0aW9uY2hhbmdlJywoKT0+e2NvbnN0IHM9Z2V0U2Vs
+          ZWN0aW9uKCk7aWYocy5yYW5nZUNvdW50KXtjb25zdCBlZD1lZE9mKHMuZ2V0UmFuZ2VBdCgwKS5j
+          b21tb25BbmNlc3RvckNvbnRhaW5lcik7aWYoZWQpe1NSPXMuZ2V0UmFuZ2VBdCgwKS5jbG9uZVJh
+          bmdlKCk7U0U9ZWR9fX0pOwpkb2N1bWVudC5hZGRFdmVudExpc3RlbmVyKCdwb2ludGVyZG93bics
+          ZT0+e2lmKGUudGFyZ2V0LmNsb3Nlc3QmJiFlLnRhcmdldC5jbG9zZXN0KCcuZWQnKSYmIWUudGFy
+          Z2V0LmNsb3Nlc3QoJyN0YmFyJykpJCgndGJhcicpLnN0eWxlLmRpc3BsYXk9J25vbmUnfSk7CmZ1
+          bmN0aW9uIGV4KGMsdil7aWYoU0UmJmRvY3VtZW50LmJvZHkuY29udGFpbnMoU0UpKXtTRS5mb2N1
+          cygpO2NvbnN0IHM9Z2V0U2VsZWN0aW9uKCk7cy5yZW1vdmVBbGxSYW5nZXMoKTtpZihTUilzLmFk
+          ZFJhbmdlKFNSKX1kb2N1bWVudC5leGVjQ29tbWFuZChjLGZhbHNlLHY9PW51bGw/bnVsbDp2KX0K
+          ZG9jdW1lbnQuYWRkRXZlbnRMaXN0ZW5lcignY2hhbmdlJyxlPT57Y29uc3QgdD1lLnRhcmdldDtp
+          Zih0LnR5cGU9PSdjaGVja2JveCcmJnQuY2xvc2VzdCYmdC5jbG9zZXN0KCcuZWQnKSl7dC50b2dn
+          bGVBdHRyaWJ1dGUoJ2NoZWNrZWQnLHQuY2hlY2tlZCk7dC5jbG9zZXN0KCcuZWQnKS5kaXNwYXRj
+          aEV2ZW50KG5ldyBFdmVudCgnaW5wdXQnLHtidWJibGVzOnRydWV9KSl9fSk7ClIoKTt3cSgpOwo8
+          L3NjcmlwdD48L2JvZHk+PC9odG1sPgo=
           EOF
           cat > app/src/main/java/com/syritis/trio/AgendaWidget.kt <<'EOF'
           package com.syritis.trio
@@ -895,6 +901,7 @@ jobs:
           import android.os.Bundle
           import android.os.Environment
           import android.provider.MediaStore
+          import android.provider.Settings
           import android.view.View
           import android.webkit.JavascriptInterface
           import android.webkit.JsResult
@@ -993,6 +1000,26 @@ jobs:
                   @JavascriptInterface
                   fun nextReminder(): String {
                       return Reminder.nextLabel(this@MainActivity)
+                  }
+
+                  @JavascriptInterface
+                  fun diag(): String {
+                      return Reminder.diag(this@MainActivity)
+                  }
+
+                  @JavascriptInterface
+                  fun askBattery() {
+                      runOnUiThread {
+                          try {
+                              val i = Intent(Settings.ACTION_REQUEST_IGNORE_BATTERY_OPTIMIZATIONS)
+                              i.data = Uri.parse("package:" + packageName)
+                              startActivity(i)
+                          } catch (e: Exception) {
+                              try {
+                                  startActivity(Intent(Settings.ACTION_IGNORE_BATTERY_OPTIMIZATION_SETTINGS))
+                              } catch (e2: Exception) {}
+                          }
+                      }
                   }
               }
 
@@ -1127,8 +1154,9 @@ jobs:
                   val en = mins(j.optString("en", "23:00"), 1380)
                   val ev = j.optInt("ev", 60).coerceAtLeast(10)
                   val now = System.currentTimeMillis() + 1000
+                  val first = ((st + ev - 1) / ev) * ev
                   for (day in 0..1) {
-                      var t = st
+                      var t = first
                       while (t <= en) {
                           val cal = Calendar.getInstance()
                           cal.set(Calendar.HOUR_OF_DAY, 0)
@@ -1156,13 +1184,17 @@ jobs:
                   val t = nextTime(c)
                   if (t < 0) return
                   try {
-                      if (Build.VERSION.SDK_INT >= 31 && !am.canScheduleExactAlarms()) {
-                          am.setAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
-                      } else {
-                          am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
-                      }
+                      val show = PendingIntent.getActivity(
+                          c, 78, Intent(c, MainActivity::class.java),
+                          PendingIntent.FLAG_UPDATE_CURRENT or PendingIntent.FLAG_IMMUTABLE
+                      )
+                      am.setAlarmClock(AlarmManager.AlarmClockInfo(t, show), pi)
                   } catch (e: Exception) {
-                      try { am.set(AlarmManager.RTC_WAKEUP, t, pi) } catch (e2: Exception) {}
+                      try {
+                          am.setExactAndAllowWhileIdle(AlarmManager.RTC_WAKEUP, t, pi)
+                      } catch (e2: Exception) {
+                          try { am.set(AlarmManager.RTC_WAKEUP, t, pi) } catch (e3: Exception) {}
+                      }
                   }
               }
 
@@ -1175,6 +1207,18 @@ jobs:
                   val same = today.get(Calendar.DAY_OF_YEAR) == cal.get(Calendar.DAY_OF_YEAR)
                   val h = String.format("%02dh%02d", cal.get(Calendar.HOUR_OF_DAY), cal.get(Calendar.MINUTE))
                   return (if (same) "aujourd'hui " else "demain ") + h
+              }
+
+              fun diag(c: Context): String {
+                  val o = JSONObject()
+                  try {
+                      val pm = c.getSystemService(Context.POWER_SERVICE) as PowerManager
+                      o.put("bat", pm.isIgnoringBatteryOptimizations(c.packageName))
+                      val am = c.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+                      o.put("vol", am.getStreamVolume(AudioManager.STREAM_ALARM))
+                      o.put("max", am.getStreamMaxVolume(AudioManager.STREAM_ALARM))
+                  } catch (e: Exception) {}
+                  return o.toString()
               }
 
               fun list(c: Context): String {
@@ -1203,10 +1247,21 @@ jobs:
                   val dur = j.optInt("dur", 700).coerceIn(200, 3000)
                   val vol = j.optInt("vol", 60).coerceIn(1, 100)
                   val h = Handler(Looper.getMainLooper())
+                  val audio = c.getSystemService(Context.AUDIO_SERVICE) as AudioManager
+                  var oldVol = -1
+                  try {
+                      oldVol = audio.getStreamVolume(AudioManager.STREAM_ALARM)
+                      val max = audio.getStreamMaxVolume(AudioManager.STREAM_ALARM)
+                      val lvl = Math.round(max * vol / 100f).coerceIn(1, max)
+                      audio.setStreamVolume(AudioManager.STREAM_ALARM, lvl, 0)
+                  } catch (e: Exception) {}
                   var finished = false
                   val finish = {
                       if (!finished) {
                           finished = true
+                          try {
+                              if (oldVol >= 0) audio.setStreamVolume(AudioManager.STREAM_ALARM, oldVol, 0)
+                          } catch (e: Exception) {}
                           done?.invoke()
                       }
                   }
@@ -1214,7 +1269,7 @@ jobs:
                   try {
                       if (snd.startsWith("uri:")) {
                           val mp = MediaPlayer()
-                          val v = vol / 100f
+                          val v = 1.0f
                           val stop = {
                               try { mp.stop() } catch (e: Exception) {}
                               try { mp.release() } catch (e: Exception) {}
@@ -1237,7 +1292,7 @@ jobs:
                       } else {
                           val idx = snd.removePrefix("tone:").toIntOrNull() ?: 0
                           val type = BUILTIN[idx.coerceIn(0, BUILTIN.size - 1)].second
-                          val tg = ToneGenerator(AudioManager.STREAM_ALARM, vol)
+                          val tg = ToneGenerator(AudioManager.STREAM_ALARM, 100)
                           tg.startTone(type, dur)
                           h.postDelayed({
                               try { tg.release() } catch (e: Exception) {}
@@ -1403,9 +1458,4 @@ jobs:
           tyyw8CWkRd9yaqL5VZxCfwXn/ZOoBBTeyelzF7e5oecupac5rxf76ZnljAICJxA=
           EOF
       - name: Compiler l'APK
-        run: gradle assembleDebug --no-daemon --stacktrace
-      - uses: actions/upload-artifact@v4
-        with:
-          name: Mon-Trio-APK
-          path: app/build/outputs/apk/debug/app-debug.apk
-          retention-days: 7
+        run: gradle assembleDebug --no-da
